@@ -1,17 +1,17 @@
 import numpy as np
-#from numpy import linalg as la
+
 import matplotlib.pyplot as plt
 import math
 
 vxo=1
-vyo=0
-vzo=0
+vyo=1
+vzo=1
 
 vo=np.array([vxo,vyo,vzo])
 
 Bx=0
 By=0
-Bz=10
+Bz=1
 
 B= np.array([Bx,By,Bz])
 
@@ -31,7 +31,7 @@ fvy=[(q*Bz/m)*vy[0]]
 
 
 i=0
-t=0.0001
+t=0.001      #step_size
 tf=10
 j=tf/t
 
@@ -76,12 +76,12 @@ y.remove(y[-1])
 i=0
 z=[zo]
 while i != len(x):
-    z.append(z[i]+vzo*ts[i])
+    z.append(z[i]+vzo*t)
     i+=1
     
 z.remove(z[-1])
 
 ax=plt.axes(projection='3d')
-ax.scatter(x,y,z)
+ax.plot(x,y,z)
 
 plt.show()
